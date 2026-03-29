@@ -1,10 +1,10 @@
 const BASE_URL = "https://campus-pa0n.onrender.com";
 
-// ✅ REGISTER
+// REGISTER
 function register() {
 fetch(`${BASE_URL}/auth/register`, {
 method: "POST",
-headers: {"Content-Type": "application/json"},
+headers: { "Content-Type": "application/json" },
 body: JSON.stringify({
 name: document.getElementById("name").value,
 email: document.getElementById("email").value,
@@ -23,14 +23,14 @@ window.location = "login.html";
 .catch(err => alert("❌ " + err.message));
 }
 
-// ✅ LOGIN
+// LOGIN
 function login() {
 const selectedRole = document.getElementById("role").value;
 
 ```
 fetch(`${BASE_URL}/auth/login`, {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
         email: document.getElementById("email").value,
         password: document.getElementById("password").value
@@ -50,7 +50,7 @@ fetch(`${BASE_URL}/auth/login`, {
 
     alert("✅ Login successful");
 
-    if(user.role === "ADMIN") {
+    if (user.role === "ADMIN") {
         window.location = "admin.html";
     } else {
         window.location = "student.html";
@@ -61,7 +61,7 @@ fetch(`${BASE_URL}/auth/login`, {
 
 }
 
-// ✅ LOAD USER COMPLAINTS
+// LOAD USER COMPLAINTS
 function loadComplaints() {
 const user = JSON.parse(localStorage.getItem("user"));
 
@@ -86,7 +86,7 @@ fetch(`${BASE_URL}/complaints/user/${user.id}`)
 
 }
 
-// ✅ LOAD ALL COMPLAINTS
+// LOAD ALL COMPLAINTS
 function loadAllComplaints() {
 fetch(`${BASE_URL}/complaints`)
 .then(res => res.json())
@@ -98,8 +98,8 @@ fetch(`${BASE_URL}/complaints`)
 
     let filtered = data;
 
-    if(category) filtered = filtered.filter(c => c.category === category);
-    if(status) filtered = filtered.filter(c => c.status === status);
+    if (category) filtered = filtered.filter(c => c.category === category);
+    if (status) filtered = filtered.filter(c => c.status === status);
 
     document.getElementById("allComplaints").innerHTML =
         filtered.map(c => `
@@ -120,7 +120,7 @@ fetch(`${BASE_URL}/complaints`)
 
 }
 
-// ✅ UPDATE STATUS
+// UPDATE STATUS
 function updateStatus(id, status) {
 fetch(`${BASE_URL}/complaints/${id}?status=${status}`, {
 method: "PUT"
@@ -130,18 +130,14 @@ loadAllComplaints();
 });
 }
 
-// ✅ TOGGLE ADMIN CODE
+// TOGGLE ADMIN CODE
 function toggleAdminCode() {
 const role = document.getElementById("role").value;
 const adminCodeField = document.getElementById("adminCode");
-
-```
 adminCodeField.style.display = role === "ADMIN" ? "block" : "none";
-```
-
 }
 
-// ✅ SUBMIT COMPLAINT
+// SUBMIT COMPLAINT
 function submitComplaint() {
 const user = JSON.parse(localStorage.getItem("user"));
 
@@ -163,7 +159,7 @@ if (!title || !desc) {
 
 fetch(`${BASE_URL}/complaints?userId=${user.id}`, {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
         title: title,
         description: desc,
