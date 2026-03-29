@@ -74,10 +74,10 @@ fetch(BASE_URL + "/auth/login", {
 })
 .then(user => {
 
-    if (user.role !== selectedRole) {
-        alert("❌ Wrong role selected!");
-        return;
-    }
+    // if (user.role !== selectedRole) {
+    //     alert("❌ Wrong role selected!");
+    //     return;
+    // }
 
     localStorage.setItem("user", JSON.stringify(user));
 
