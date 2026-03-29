@@ -46,55 +46,36 @@ fetch(BASE_URL + "/auth/register", {
 
 // ================= LOGIN =================
 function login() {
-const email = document.getElementById("email").value;
-const password = document.getElementById("password").value;
-const selectedRole = document.getElementById("role").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const selectedRole = document.getElementById("role").value;
 
-```
-if (!email || !password) {
-    alert("Please fill all fields");
-    return;
-}
-
-fetch(BASE_URL + "/auth/login", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        email: email,
-        password: password
+    fetch(BASE_URL + "/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
     })
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error("Invalid credentials");
-    }
-    return response.json();
-})
-.then(user => {
+    .then(res => {
+        if (!res.ok) throw new Error("Invalid credentials");
+        return res.json();
+    })
+    .then(user => {
+        console.log("LOGIN RESPONSE:", user);
 
-    // if (user.role !== selectedRole) {
-    //     alert("❌ Wrong role selected!");
-    //     return;
-    // }
-console.log("LOGIN RESPONSE:", user); 
-    localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user));
 
-    alert("✅ Login successful");
+        alert("Login successful");
 
-    if (user.role === "ADMIN") {
-        window.location.href = "admin.html";
-    } else {
-        window.location.href = "student.html";
-    }
-})
-.catch(error => {
-    console.error(error);
-    alert("❌ " + error.message);
-});
-```
-
+        if (user.role === "ADMIN") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "student.html";
+        }
+    })
+    .catch(err => alert(err.message));
 }
 
 // ================= LOAD USER COMPLAINTS =================
