@@ -2,9 +2,7 @@ FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
-COPY Backend ./Backend
-
-WORKDIR /app/Backend
+COPY . .
 
 RUN apt-get update && apt-get install -y maven
 
