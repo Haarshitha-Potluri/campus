@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* FIXED */
+    margin: 0;
+}
+
+/* Card style like MovieHub */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #2a5298;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+a {
+    color: #2a5298;
+}
+
+/* Wider dashboard */
+.wide {
+    width: 800px;
+}
+
+/* Card sections */
+.card {
+    background: #f9f9f9;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+}
+
+/* Complaint Cards */
+.complaint-card {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Status badges */
+.badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* ✅ FIXED CLASSES */
+.pending {
+    background: orange;
+}
+
+.in-progress {
+    background: blue;
+}
+
+.resolved {
+    background: green;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="loadComplaints()">
+
+<div class="container wide">
+  <h2>Student Dashboard</h2>
+
+  <!-- Complaint Form -->
+  <div class="card">
+    <h3>Submit Complaint</h3>
+
+    <input id="title" placeholder="Title">
+    <textarea id="desc" placeholder="Description"></textarea>
+
+    <select id="category">
+      <option>Electricity</option>
+      <option>Water</option>
+      <option>Internet</option>
+      <option>Maintenance</option>
+    </select>
+
+    <button onclick="submitComplaint()">Submit</button>
+  </div>
+
+  <!-- Complaint List -->
+  <div class="card">
+    <h3>Your Complaints</h3>
+    <div id="complaints"></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

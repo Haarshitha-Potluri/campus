@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="loadAllComplaints()">
+
+<div class="container wide">
+  <h2>Admin Dashboard</h2>
+
+  <!-- Filters -->
+  <div class="card">
+    <h3>Filter Complaints</h3>
+
+    <select id="filterCategory" onchange="loadAllComplaints()">
+      <option value="">All Categories</option>
+      <option>Electricity</option>
+      <option>Water</option>
+      <option>Internet</option>
+    </select>
+
+    <select id="filterStatus" onchange="loadAllComplaints()">
+      <option value="">All Status</option>
+      <option>Pending</option>
+      <option>In Progress</option>
+      <option>Resolved</option>
+    </select>
+  </div>
+
+  <!-- Complaint List -->
+  <div class="card">
+    <h3>All Complaints</h3>
+    <div id="allComplaints"></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
