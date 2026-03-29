@@ -23,7 +23,7 @@ window.location = "login.html";
 .catch(err => alert("❌ " + err.message));
 }
 
-// ✅ LOGIN WITH ROLE CHECK
+// ✅ LOGIN
 function login() {
 const selectedRole = document.getElementById("role").value;
 
@@ -71,9 +71,7 @@ fetch(`${BASE_URL}/complaints/user/${user.id}`)
 .then(data => {
     document.getElementById("complaints").innerHTML =
         data.map(c => {
-            const statusClass = c.status
-                .toLowerCase()
-                .replace(/\s+/g, "-");
+            const statusClass = c.status.toLowerCase().replace(/\s+/g, "-");
 
             return `
                 <div class="complaint-card">
@@ -88,7 +86,7 @@ fetch(`${BASE_URL}/complaints/user/${user.id}`)
 
 }
 
-// ✅ LOAD ALL COMPLAINTS (ADMIN)
+// ✅ LOAD ALL COMPLAINTS
 function loadAllComplaints() {
 fetch(`${BASE_URL}/complaints`)
 .then(res => res.json())
@@ -100,13 +98,8 @@ fetch(`${BASE_URL}/complaints`)
 
     let filtered = data;
 
-    if(category) {
-        filtered = filtered.filter(c => c.category === category);
-    }
-
-    if(status) {
-        filtered = filtered.filter(c => c.status === status);
-    }
+    if(category) filtered = filtered.filter(c => c.category === category);
+    if(status) filtered = filtered.filter(c => c.status === status);
 
     document.getElementById("allComplaints").innerHTML =
         filtered.map(c => `
@@ -137,17 +130,13 @@ loadAllComplaints();
 });
 }
 
-// ✅ TOGGLE ADMIN CODE FIELD
+// ✅ TOGGLE ADMIN CODE
 function toggleAdminCode() {
 const role = document.getElementById("role").value;
 const adminCodeField = document.getElementById("adminCode");
 
 ```
-if (role === "ADMIN") {
-    adminCodeField.style.display = "block";
-} else {
-    adminCodeField.style.display = "none";
-}
+adminCodeField.style.display = role === "ADMIN" ? "block" : "none";
 ```
 
 }
@@ -187,10 +176,8 @@ fetch(`${BASE_URL}/complaints?userId=${user.id}`, {
 })
 .then(() => {
     alert("✅ Complaint Submitted Successfully");
-
     document.getElementById("title").value = "";
     document.getElementById("desc").value = "";
-
     loadComplaints();
 })
 .catch(err => {
