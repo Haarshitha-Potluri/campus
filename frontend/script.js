@@ -78,7 +78,7 @@ fetch(BASE_URL + "/auth/login", {
     //     alert("❌ Wrong role selected!");
     //     return;
     // }
-
+console.log("LOGIN RESPONSE:", user); 
     localStorage.setItem("user", JSON.stringify(user));
 
     alert("✅ Login successful");
